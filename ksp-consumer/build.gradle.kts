@@ -16,18 +16,6 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
     }
 }
 
-kotlin {
-    sourceSets {
-        main {
-            kotlin.srcDirs("$buildDir/generated/source/apollo")
-        }
-    }
-}
-
-tasks.withType<com.google.devtools.ksp.gradle.KspTask>().configureEach {
-     dependsOn(tasks.named("generateApolloSources"))
-}
-
 dependencies {
     implementation(project(":annotations"))
     ksp(project(":test-processor"))
